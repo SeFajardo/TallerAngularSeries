@@ -1,0 +1,41 @@
+<div class="container-fluid mt-4">
+  <h1 class="display-4 mb-4">TV Series</h1>
+
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-light table-hover">
+        <thead class="table-bordered">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Channel</th>
+            <th scope="col">Seasons</th>
+          </tr>
+        </thead>
+        <tbody class="table-secondary">
+          <tr *ngFor="let serie of series" (click)="elegida(serie)">
+            <td>{{serie.id}}</td>
+            <td><a href="#" (click)="$event.preventDefault()">{{serie.name}}</a></td>
+            <td>{{serie.channel}}</td>
+            <td>{{serie.seasons}}</td>
+          </tr>
+          <tr class="table-secondary">
+            <td colspan="3"><strong>Seasons average:</strong></td>
+            <td><strong>{{averageSeasons}}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-5" *ngIf="serieElegida">
+      <div class="card">
+        <img [src]="serieElegida.poster" class="card-img-top" [alt]="serieElegida.name">
+        <div class="card-body">
+          <h4 class="card-title">{{serieElegida.name}}</h4>
+          <p class="card-text">{{serieElegida.description}}</p>
+          <a [href]="serieElegida.webpage" target="_blank" class="btn btn-primary">Webpage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
